@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ride_book_app/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,20 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return const Scaffold(
-      body: Center(
-        child: Text(
-          'You have pushed the button this many times:',
-        ),
-      ),
+      body: WelcomePage(),
     );
-  }
-}
-
-class Main extends StatelessWidget {
-const Main({ super.key });
-
-  @override
-  Widget build(BuildContext context){
-    return Container();
   }
 }
