@@ -10,52 +10,77 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text(
-              'Welcom back!',
-              style: TextStyle(
-                fontFamily: 'PlusJakartaSans',
-                fontSize: 26,
-                fontWeight: FontWeight.w800, // 800 extra bold
-                color: Color(0xff13142e),
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const Spacer(
+                flex: 75,
               ),
-            ),
-            Text(
-              'Enter your creditional to continue!',
-              style: TextStyle(
-                fontFamily: 'PlusJakartaSans',
-                fontSize: 14,
-                color: Color(0xffb4b4b4),
+              const Text(
+                'Welcom back!',
+                style: TextStyle(
+                  fontFamily: 'PlusJakartaSans',
+                  fontSize: 26,
+                  fontWeight: FontWeight.w800, // 800 extra bold
+                  color: Color(0xff13142e),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            DecoratedBox(
-              decoration: BoxDecoration(color: Colors.grey),
-              child: SizedBox(
-                width: 330,
-                height: 135,
-                child: Center(child: Text('IMAGE')),
+              const Text(
+                'Enter your creditional to continue!',
+                style: TextStyle(
+                  fontFamily: 'PlusJakartaSans',
+                  fontSize: 14,
+                  color: Color(0xffb4b4b4),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 28,
-            ),
-            PhoneSection(),
-            PasswordSection(),
-            ElevatedButton(
-              onPressed: null,
-              child: Text('Login'),
-            ),
-            SignupSection(),
-          ],
+              const SizedBox(
+                height: 16,
+              ),
+              const DecoratedBox(
+                decoration: BoxDecoration(color: Colors.grey),
+                child: SizedBox(
+                  width: 330,
+                  height: 135,
+                  child: Center(child: Text('IMAGE')),
+                ),
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              const PhoneSection(),
+              const PasswordSection(),
+              const SizedBox(
+                height: 40,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print('Login');
+                },
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Theme.of(context).colorScheme.onPrimary,
+                  ),
+                  minimumSize: MaterialStateProperty.all(const Size(330, 50)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                ),
+                child:
+                    const Text('Login', style: TextStyle(color: Colors.black)),
+              ),
+              const Spacer(
+                flex: 158,
+              ),
+              const SignupSection(),
+            ],
+          ),
         ),
       ),
     );
@@ -159,45 +184,66 @@ class _PasswordSectionState extends State<PasswordSection> {
   Widget build(BuildContext context) {
     final iconData =
         isShowPassword ? Icons.visibility : Icons.visibility_off_outlined;
-    return Container(
-      width: 330,
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: const Color(0xffb4b4b4),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(left: 21, right: 21),
-        child: Row(
-          children: [
-            Expanded(
-              child: TextField(
-                obscureText: isShowPassword,
-                decoration: const InputDecoration(
-                  hintText: 'Password',
-                  border: InputBorder.none,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          width: 330,
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: const Color(0xffb4b4b4),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 21, right: 21),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    obscureText: isShowPassword,
+                    decoration: const InputDecoration(
+                      hintText: 'Password',
+                      border: InputBorder.none,
+                    ),
+                  ),
                 ),
-              ),
+                const SizedBox(width: 10),
+                InkWell(
+                  overlayColor: MaterialStateProperty.all(Colors.transparent),
+                  onTap: () {
+                    print('Show password');
+                    setState(() {
+                      isShowPassword = !isShowPassword;
+                    });
+                  },
+                  child: Icon(
+                    iconData,
+                    color: const Color(0xff1d1d1d),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 10),
-            InkWell(
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
-              onTap: () {
-                print('Show password');
-                setState(() {
-                  isShowPassword = !isShowPassword;
-                });
-              },
-              child: Icon(
-                iconData,
-                color: const Color(0xff1d1d1d),
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+        const SizedBox(
+          height: 5,
+        ),
+        InkWell(
+          onTap: () {
+            print('Forgot password');
+          },
+          child: const Text(
+            'Forgot your password?',
+            style: TextStyle(
+              fontFamily: 'Popins',
+              fontSize: 10,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -207,6 +253,31 @@ class SignupSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Don’t have an account? Sign up');
+    final primaryColor = Theme.of(context).colorScheme.onPrimary;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          'Don’t have an account? ',
+          style: TextStyle(
+            fontFamily: 'Popins',
+            fontSize: 14,
+            color: Colors.black,
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            print('Sign up');
+          },
+          child: Text(
+            'Sign up',
+            style: TextStyle(
+              color: primaryColor,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
