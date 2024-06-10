@@ -55,9 +55,6 @@ class _LoginPageState extends State<LoginPage> {
                 height: 28,
               ),
               const PhoneSection(),
-              const SizedBox(
-                height: 14,
-              ),
               const PasswordSection(),
               const SizedBox(
                 height: 40,
@@ -91,7 +88,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
 class SignupSection extends StatelessWidget {
   const SignupSection({super.key});
 
