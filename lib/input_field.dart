@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class InputField extends StatelessWidget {
   const InputField({
     super.key,
-    required this.iconData,
+    required this.icon,
     required this.isShowPassword,
     required this.onIconPressed,
     required this.labelText,
   });
 
-  final IconData iconData;
+  final Icon icon;
   final bool isShowPassword;
   final String labelText;
 
@@ -44,7 +44,7 @@ class InputField extends StatelessWidget {
         suffixIcon: Padding(
           padding: const EdgeInsets.only(right: 12, top: 5, bottom: 5),
           child: IconButton(
-            icon: Icon(iconData),
+            icon: icon,
             onPressed: onIconPressed,
           ),
         ),
