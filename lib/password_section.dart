@@ -19,7 +19,7 @@ class _PasswordSectionState extends State<PasswordSection> {
       width: 330,
       height: 50,
       child: InputField(
-        icon: Icon(iconData),
+        suffixIcon: Icon(iconData),
         isShowPassword: isShowPassword,
         labelText: 'Password',
         onIconPressed: () {
