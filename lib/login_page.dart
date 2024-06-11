@@ -55,6 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 28,
               ),
               const PhoneSection(),
+              const SizedBox(height: 10,),
               const PasswordSection(),
               const SizedBox(
                 height: 40,

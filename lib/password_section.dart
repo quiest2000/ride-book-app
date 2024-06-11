@@ -15,19 +15,28 @@ class _PasswordSectionState extends State<PasswordSection> {
   Widget build(BuildContext context) {
     final iconData =
         isShowPassword ? Icons.visibility : Icons.visibility_off_outlined;
-    return SizedBox(
-      width: 330,
-      height: 50,
-      child: InputField(
-        suffixIcon: Icon(iconData),
-        isShowPassword: isShowPassword,
-        labelText: 'Password',
-        onIconPressed: () {
-          setState(() {
-            isShowPassword = !isShowPassword;
-          });
-        },
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        SizedBox(
+          width: 330,
+          height: 50,
+          child: InputField(
+            suffixIcon: Icon(iconData),
+            isShowPassword: isShowPassword,
+            labelText: 'Password',
+            onIconPressed: () {
+              setState(() {
+                isShowPassword = !isShowPassword;
+              });
+            },
+          ),
+        ),
+        const Text(
+          'Forgot your password?',
+          style: TextStyle(fontSize: 10, fontFamily: 'Popins', height: 2.2),
+        ),
+      ],
     );
   }
 }

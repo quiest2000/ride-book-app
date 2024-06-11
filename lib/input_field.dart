@@ -10,6 +10,7 @@ class InputField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.onIconPressed,
+    this.style,
   });
 
   final bool isShowPassword;
@@ -19,12 +20,14 @@ class InputField extends StatelessWidget {
   final VoidCallback? onIconPressed;
   final Widget? prefixIcon;
   final Icon? suffixIcon;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      autocorrect: autofocus,
+      autofocus: autofocus,
       obscureText: isShowPassword,
+      style: style,
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
         contentPadding: contentPadding,

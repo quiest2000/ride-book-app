@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ride_book_app/country_section.dart';
 import 'package:ride_book_app/input_field.dart';
 
 class PhoneSection extends StatelessWidget {
@@ -18,6 +19,13 @@ class PhoneSection extends StatelessWidget {
               width: 330,
               height: 50,
               child: InputField(
+                autofocus: true,
+                style: TextStyle(
+                  fontFamily: 'PlusJakartaSans',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xff13142e),
+                ),
                 prefixIcon: CountrySection(),
                 suffixIcon: Icon(
                   Icons.check_circle_rounded,
@@ -47,38 +55,6 @@ class PhoneSection extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class CountrySection extends StatelessWidget {
-  const CountrySection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const double spaceSize = 15;
-
-    return SizedBox(
-      width: 100, // must be greater than entire row width
-      height: 50,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(width: spaceSize),
-          Image.asset('assets/united-states.png', width: 30, height: 30),
-          const SizedBox(width: spaceSize),
-          Image.asset(
-            'assets/arrow-down.png',
-          ),
-          const SizedBox(width: spaceSize),
-          const VerticalDivider(
-            color: Color(0xffb4b4b4),
-            width: 1,
-            indent: 12,
-            endIndent: 12,
-          ),
-        ],
-      ),
     );
   }
 }
